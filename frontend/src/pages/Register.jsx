@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Leaf, User, Mail, Lock, ArrowRight } from "lucide-react";
+import { User, Mail, Lock, ArrowRight } from "lucide-react";
 import { registerUser, loginUser } from "../services/authService";
 import { useAuthContext } from "../context/AuthContext";
+import useLanguage from "../hooks/useLanguage";
+import LanguageToggle from "../components/common/LanguageToggle";
 
 const Register = () => {
   const navigate = useNavigate();
   const { login } = useAuthContext();
+  const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -79,13 +82,17 @@ const Register = () => {
 
   return (
     <div className="auth-page">
+      <div className="auth-lang-bar">
+        <LanguageToggle />
+      </div>
+
       <div className="auth-card">
         <div className="auth-header">
           <div className="auth-logo-badge">
-            <Leaf size={28} />
+            <img src="/logo.png" alt="AyurSutra Logo" className="auth-logo-img" />
           </div>
-          <h1>CREATE ACCOUNT</h1>
-          <p>Begin your Panchakarma wellness sanctuary journey</p>
+          <h1>AyurSutra</h1>
+          <p>{t("auth.registerSubtitle", "Create your Panchakarma patient account")}</p>
         </div>
 
         {error && (
@@ -107,12 +114,12 @@ const Register = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Username</label>
+            <label className="form-label">{t("auth.username", "Username")}</label>
             <div style={{ position: "relative" }}>
               <input
                 type="text"
                 name="username"
-                placeholder="e.g. ananya_sharma"
+                placeholder={t("auth.usernamePlaceholder", "e.g. ananya_sharma")}
                 value={formData.username}
                 onChange={handleChange}
                 className="input-control"
@@ -133,12 +140,12 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Email Address</label>
+            <label className="form-label">{t("auth.email", "Email Address")}</label>
             <div style={{ position: "relative" }}>
               <input
                 type="email"
                 name="email"
-                placeholder="name@example.com"
+                placeholder={t("auth.emailPlaceholder", "name@example.com")}
                 value={formData.email}
                 onChange={handleChange}
                 className="input-control"
@@ -160,7 +167,7 @@ const Register = () => {
 
           <div className="form-row">
             <div className="form-group">
-              <label className="form-label">Password</label>
+              <label className="form-label">{t("auth.password", "Password")}</label>
               <div style={{ position: "relative" }}>
                 <input
                   type="password"
@@ -186,12 +193,12 @@ const Register = () => {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Confirm Password</label>
+              <label className="form-label">{t("auth.confirmPassword", "Confirm Password")}</label>
               <div style={{ position: "relative" }}>
                 <input
                   type="password"
                   name="confirmPassword"
-                  placeholder="Re-enter password"
+                  placeholder={t("auth.confirmPasswordPlaceholder", "Re-enter password")}
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className="input-control"
@@ -219,10 +226,10 @@ const Register = () => {
             disabled={loading}
           >
             {loading ? (
-              "Creating Account..."
+              t("auth.creatingAccount", "Creating Account...")
             ) : (
               <>
-                <span>Complete Registration</span>
+                <span>{t("auth.createAccount", "Complete Registration")}</span>
                 <ArrowRight size={18} />
               </>
             )}
@@ -236,7 +243,7 @@ const Register = () => {
               color: "var(--text-muted)",
             }}
           >
-            Already registered with us?{" "}
+            {t("auth.haveAccount", "Already registered with us?")}{" "}
             <Link
               to="/login"
               style={{
@@ -245,7 +252,7 @@ const Register = () => {
                 fontWeight: 600,
               }}
             >
-              Sign In to Portal
+              {t("auth.loginHere", "Sign In to Portal")}
             </Link>
           </p>
         </form>

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import useLanguage from "../../hooks/useLanguage";
 
 const WaterTracker = () => {
+  const { t } = useLanguage();
   const [glasses, setGlasses] = useState(4);
 
   const addGlass = () => {
@@ -11,12 +13,12 @@ const WaterTracker = () => {
 
   return (
     <div className="card water-tracker">
-      <h3>Water Intake</h3>
+      <h3>{t("patient.waterIntake", "Water Intake")}</h3>
 
-      <p>Stay hydrated throughout your healing journey.</p>
+      <p>{t("patient.waterDesc", "Stay hydrated throughout your healing journey.")}</p>
 
       <div className="water-count">
-        {glasses} / 8 glasses
+        {glasses} / 8 {t("patient.glasses", "glasses")}
       </div>
 
       <div className="water-progress">
@@ -28,7 +30,7 @@ const WaterTracker = () => {
       </div>
 
       <button onClick={addGlass}>
-        + Add Glass
+        {t("patient.addGlass", "+ Add Glass")}
       </button>
     </div>
   );

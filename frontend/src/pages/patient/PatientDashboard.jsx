@@ -23,8 +23,10 @@ import MarmaBodyMap from "../../components/clinical/MarmaBodyMap";
 import AyurvedicEHRReport from "../../components/clinical/AyurvedicEHRReport";
 import { getMySessions } from "../../services/patientService";
 import { getPatientTherapies } from "../../services/therapyService";
+import useLanguage from "../../hooks/useLanguage";
 
 const PatientDashboard = () => {
+  const { t } = useLanguage();
   const [sessions, setSessions] = useState([]);
   const [therapies, setTherapies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -81,13 +83,13 @@ const PatientDashboard = () => {
           onClick={() => setShowMarmaMap(!showMarmaMap)}
           className={`btn btn-sm ${showMarmaMap ? "btn-primary" : "btn-secondary"}`}
         >
-          <Map size={15} /> {showMarmaMap ? "Hide Body Map" : "Explore Marma & Dosha Map"}
+          <Map size={15} /> {showMarmaMap ? t("patient.hideBodyMap", "Hide Body Map") : t("patient.exploreBodyMap", "Explore Marma & Dosha Map")}
         </button>
         <button
           onClick={() => setShowEHR(true)}
           className="btn btn-secondary btn-sm"
         >
-          <FileText size={15} /> View Ayurvedic EHR Report
+          <FileText size={15} /> {t("patient.viewEHR", "View Ayurvedic EHR Report")}
         </button>
       </div>
 
@@ -108,7 +110,7 @@ const PatientDashboard = () => {
         <div className="hero-spotlight">
           <div>
             <span className="spotlight-badge">
-              <Sparkles size={13} /> Next Panchakarma Appointment
+              <Sparkles size={13} /> {t("patient.nextAppointment", "Next Panchakarma Appointment")}
             </span>
             <h2
               style={{
@@ -147,7 +149,7 @@ const PatientDashboard = () => {
 
           <div style={{ display: "flex", gap: "10px" }}>
             <Link to="/patient/sessions" className="btn btn-primary">
-              <span>View Appointment</span>
+              <span>{t("patient.viewAppointment", "View Appointment")}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -161,7 +163,7 @@ const PatientDashboard = () => {
             <Sparkles size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-label">Prescribed Therapies</span>
+            <span className="stat-label">{t("patient.prescribedTherapies", "Prescribed Therapies")}</span>
             <strong className="stat-value">{therapies.length}</strong>
           </div>
         </div>
@@ -171,7 +173,7 @@ const PatientDashboard = () => {
             <CheckCircle2 size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-label">Sessions Completed</span>
+            <span className="stat-label">{t("patient.sessionsCompleted", "Sessions Completed")}</span>
             <strong className="stat-value">{completedSessions}</strong>
           </div>
         </div>
@@ -181,7 +183,7 @@ const PatientDashboard = () => {
             <Clock size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-label">Upcoming Sessions</span>
+            <span className="stat-label">{t("patient.upcomingSessions", "Upcoming Sessions")}</span>
             <strong className="stat-value">{upcomingSessions.length}</strong>
           </div>
         </div>
@@ -191,7 +193,7 @@ const PatientDashboard = () => {
             <Activity size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-label">Treatment Progress</span>
+            <span className="stat-label">{t("patient.treatmentProgress", "Treatment Progress")}</span>
             <strong className="stat-value">{progressPercent}%</strong>
           </div>
         </div>
@@ -213,25 +215,25 @@ const PatientDashboard = () => {
               <div>
                 <h3 className="card-title">
                   <Sparkles size={19} style={{ color: "var(--gold-primary)" }} />
-                  Prescribed Therapy Plan
+                  {t("patient.prescribedPlan", "Prescribed Therapy Plan")}
                 </h3>
                 <p className="card-subtitle">
-                  Your customized clinical Panchakarma treatments
+                  {t("patient.prescribedPlanSubtitle", "Your customized clinical Panchakarma treatments")}
                 </p>
               </div>
 
               <Link to="/patient/schedule" className="btn btn-primary btn-sm">
-                <CalendarPlus size={15} /> Book Slot
+                <CalendarPlus size={15} /> {t("patient.bookSlot", "Book Slot")}
               </Link>
             </div>
 
             {loading ? (
-              <p style={{ color: "var(--text-muted)", padding: "20px 0" }}>Loading therapy plans...</p>
+              <p style={{ color: "var(--text-muted)", padding: "20px 0" }}>{t("patient.loadingTherapies", "Loading therapy plans...")}</p>
             ) : therapies.length === 0 ? (
               <div className="empty-state">
                 <Sparkles size={36} className="empty-state-icon" />
-                <h4>No Prescriptions Yet</h4>
-                <p>Your Vaidya has not assigned a treatment plan yet.</p>
+                <h4>{t("patient.noPrescriptions", "No Prescriptions Yet")}</h4>
+                <p>{t("patient.noPrescriptionsDesc", "Your Vaidya has not assigned a treatment plan yet.")}</p>
               </div>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>

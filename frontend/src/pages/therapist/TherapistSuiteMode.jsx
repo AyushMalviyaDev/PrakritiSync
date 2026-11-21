@@ -143,8 +143,8 @@ const TherapistSuiteMode = () => {
     <div
       style={{
         minHeight: "100vh",
-        background: "#050b07",
-        color: "#f8fafc",
+        background: "var(--bg-canvas)",
+        color: "var(--text-body)",
         padding: "24px 32px",
         fontFamily: "var(--font-body)",
       }}
@@ -155,7 +155,7 @@ const TherapistSuiteMode = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+          borderBottom: "1px solid var(--border-subtle)",
           paddingBottom: "16px",
           marginBottom: "24px",
         }}
@@ -228,8 +228,8 @@ const TherapistSuiteMode = () => {
           {/* Left Column: Big Timer & Procedure Context */}
           <div
             style={{
-              background: "rgba(18, 38, 28, 0.8)",
-              border: "1px solid var(--border-gold)",
+              background: "var(--bg-card)",
+              border: "1px solid var(--border-subtle)",
               borderRadius: "24px",
               padding: "36px",
               display: "flex",
@@ -246,9 +246,9 @@ const TherapistSuiteMode = () => {
                   display: "inline-block",
                   padding: "6px 16px",
                   borderRadius: "20px",
-                  background: "rgba(212, 175, 55, 0.15)",
-                  border: "1px solid var(--gold-primary)",
-                  color: "var(--gold-light)",
+                  background: "var(--mint-tint)",
+                  border: "1px solid #a7f3d0",
+                  color: "var(--emerald-primary)",
                   fontWeight: 700,
                   fontSize: "0.85rem",
                   letterSpacing: "0.08em",
@@ -259,7 +259,7 @@ const TherapistSuiteMode = () => {
                 {activeSession?.therapy_name || "Panchakarma Treatment"}
               </span>
 
-              <h1 style={{ fontFamily: "var(--font-serif)", color: "#fff", fontSize: "2rem" }}>
+              <h1 style={{ fontFamily: "var(--font-serif)", color: "var(--text-heading)", fontSize: "2rem" }}>
                 {activeSession?.patient_name || "Patient in Session"}
               </h1>
               <p style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>
@@ -273,11 +273,10 @@ const TherapistSuiteMode = () => {
                 fontFamily: "var(--font-serif)",
                 fontSize: "6.5rem",
                 fontWeight: 700,
-                color: isRunning ? "var(--mint-accent)" : "var(--gold-light)",
+                color: isRunning ? "var(--emerald-accent)" : "var(--text-heading)",
                 letterSpacing: "0.05em",
                 lineHeight: 1,
                 margin: "24px 0",
-                textShadow: isRunning ? "0 0 40px rgba(52, 211, 153, 0.3)" : "none",
               }}
             >
               {formatTimer(secondsLeft)}
@@ -330,8 +329,8 @@ const TherapistSuiteMode = () => {
           {/* Right Column: One-Tap Touch Charting */}
           <div
             style={{
-              background: "rgba(18, 38, 28, 0.8)",
-              border: "1px solid var(--border-gold)",
+              background: "var(--bg-card)",
+              border: "1px solid var(--border-subtle)",
               borderRadius: "24px",
               padding: "32px",
               display: "flex",
@@ -341,7 +340,7 @@ const TherapistSuiteMode = () => {
             }}
           >
             <div>
-              <h3 style={{ fontFamily: "var(--font-serif)", color: "var(--gold-light)", fontSize: "1.25rem", marginBottom: "4px" }}>
+              <h3 style={{ fontFamily: "var(--font-serif)", color: "var(--text-heading)", fontSize: "1.25rem", marginBottom: "4px" }}>
                 One-Tap Patient Tolerance (0 - 10)
               </h3>
               <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginBottom: "14px" }}>
@@ -353,10 +352,10 @@ const TherapistSuiteMode = () => {
                   const isSelected = discomfort === num;
                   const bg =
                     num <= 3
-                      ? "rgba(16, 185, 129, 0.2)"
+                      ? "rgba(16, 185, 129, 0.12)"
                       : num <= 6
-                      ? "rgba(245, 158, 11, 0.2)"
-                      : "rgba(239, 68, 68, 0.2)";
+                      ? "rgba(245, 158, 11, 0.15)"
+                      : "rgba(239, 68, 68, 0.15)";
                   const border =
                     num <= 3
                       ? "var(--mint-accent)"
@@ -374,11 +373,11 @@ const TherapistSuiteMode = () => {
                         borderRadius: "10px",
                         background: isSelected ? border : bg,
                         border: `1.5px solid ${border}`,
-                        color: isSelected ? "#000" : "#fff",
+                        color: isSelected ? "#fff" : "var(--text-primary)",
                         fontWeight: 700,
                         fontSize: "1.1rem",
                         cursor: "pointer",
-                        boxShadow: isSelected ? "0 0 15px rgba(255,255,255,0.4)" : "none",
+                        boxShadow: isSelected ? "0 2px 8px rgba(0,0,0,0.15)" : "none",
                         transition: "all 0.15s",
                       }}
                     >
@@ -391,7 +390,7 @@ const TherapistSuiteMode = () => {
 
             {/* Quick Touch Clinical Observations */}
             <div>
-              <h3 style={{ fontFamily: "var(--font-serif)", color: "var(--gold-light)", fontSize: "1.25rem", marginBottom: "4px" }}>
+              <h3 style={{ fontFamily: "var(--font-serif)", color: "var(--text-heading)", fontSize: "1.25rem", marginBottom: "4px" }}>
                 Quick Clinical Findings
               </h3>
               <p style={{ color: "var(--text-muted)", fontSize: "0.85rem", marginBottom: "12px" }}>
@@ -410,9 +409,9 @@ const TherapistSuiteMode = () => {
                       style={{
                         padding: "10px 16px",
                         borderRadius: "12px",
-                        background: isChecked ? "rgba(212, 175, 55, 0.25)" : "var(--bg-input)",
-                        border: `1px solid ${isChecked ? "var(--gold-primary)" : "var(--border-subtle)"}`,
-                        color: isChecked ? "var(--gold-light)" : "var(--text-body)",
+                        background: isChecked ? "var(--mint-tint)" : "var(--bg-canvas)",
+                        border: `1px solid ${isChecked ? "var(--emerald-accent)" : "var(--border-subtle)"}`,
+                        color: isChecked ? "var(--emerald-accent)" : "var(--text-body)",
                         fontSize: "0.88rem",
                         cursor: "pointer",
                         fontWeight: isChecked ? 600 : 400,

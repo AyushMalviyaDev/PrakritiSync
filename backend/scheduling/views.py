@@ -612,25 +612,25 @@ class BookSessionView(APIView):
         }
 
         # --------------------------------------------------
-        # Validate through TherapySessionSerializer
+        # Validate through TherapySessionSerializer (Atomic)
         # --------------------------------------------------
 
-        serializer = TherapySessionSerializer(
-            data=session_data
-        )
-
-        if not serializer.is_valid():
-
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST,
+        with transaction.atomic():
+            serializer = TherapySessionSerializer(
+                data=session_data
             )
 
-        # --------------------------------------------------
-        # Create session
-        # --------------------------------------------------
+            if not serializer.is_valid():
+                return Response(
+                    serializer.errors,
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
 
-        session = serializer.save()
+            # --------------------------------------------------
+            # Create session
+            # --------------------------------------------------
+
+            session = serializer.save()
 
         return Response(
             {

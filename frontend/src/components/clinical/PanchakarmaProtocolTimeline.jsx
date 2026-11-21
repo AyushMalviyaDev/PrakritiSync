@@ -106,12 +106,12 @@ const PanchakarmaProtocolTimeline = ({ therapies = [] }) => {
                   padding: "20px",
                   borderRadius: "14px",
                   background: isCurrent
-                    ? "linear-gradient(135deg, rgba(212, 175, 55, 0.14) 0%, rgba(16, 36, 26, 0.85) 100%)"
-                    : "var(--bg-input)",
+                    ? "linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%)"
+                    : "var(--bg-surface-soft)",
                   border: isCurrent
-                    ? "1.5px solid var(--gold-primary)"
+                    ? "1.5px solid var(--emerald-accent)"
                     : "1px solid var(--border-subtle)",
-                  boxShadow: isCurrent ? "var(--gold-glow)" : "none",
+                  boxShadow: isCurrent ? "0 4px 14px rgba(5, 150, 105, 0.12)" : "none",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -194,8 +194,8 @@ const PanchakarmaProtocolTimeline = ({ therapies = [] }) => {
           <div
             style={{
               padding: "14px 18px",
-              background: "rgba(212, 175, 55, 0.12)",
-              border: "1px solid rgba(212, 175, 55, 0.3)",
+              background: "#ecfdf5",
+              border: "1px solid #a7f3d0",
               borderRadius: "12px",
               marginBottom: "20px",
               fontSize: "0.86rem",
@@ -211,7 +211,7 @@ const PanchakarmaProtocolTimeline = ({ therapies = [] }) => {
               <div
                 key={idx}
                 style={{
-                  background: "var(--bg-input)",
+                  background: "var(--bg-surface-soft)",
                   border: "1px solid var(--border-subtle)",
                   borderRadius: "12px",
                   padding: "16px",
@@ -220,16 +220,16 @@ const PanchakarmaProtocolTimeline = ({ therapies = [] }) => {
                   gap: "8px",
                 }}
               >
-                <div style={{ fontSize: "0.72rem", color: "var(--mint-accent)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                <div style={{ fontSize: "0.72rem", color: "var(--emerald-accent)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
                   {meal.timing}
                 </div>
-                <h4 style={{ fontFamily: "var(--font-serif)", color: "var(--gold-light)", fontSize: "1rem" }}>
+                <h4 style={{ fontFamily: "var(--font-serif)", color: "var(--text-heading)", fontSize: "1rem" }}>
                   {meal.step}
                 </h4>
                 <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>
                   <strong>Physiological Aim:</strong> {meal.dosha}
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-body)", background: "rgba(0,0,0,0.25)", padding: "10px", borderRadius: "8px", marginTop: "auto" }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-body)", background: "#ffffff", border: "1px solid var(--border-subtle)", padding: "10px", borderRadius: "8px", marginTop: "auto" }}>
                   <strong>Preparation:</strong> {meal.recipe}
                 </div>
               </div>

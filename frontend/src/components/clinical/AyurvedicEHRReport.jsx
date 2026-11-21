@@ -114,8 +114,8 @@ const AyurvedicEHRReport = ({ isOpen, onClose, patientId: _patientId = null, pat
         style={{
           width: "820px",
           maxWidth: "100%",
-          background: "#0c1a13",
-          border: "2px solid var(--gold-primary)",
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-subtle)",
           borderRadius: "20px",
           boxShadow: "var(--shadow-modal)",
           padding: "36px",
@@ -158,22 +158,27 @@ const AyurvedicEHRReport = ({ isOpen, onClose, patientId: _patientId = null, pat
             Loading Ayurvedic clinical records...
           </div>
         ) : (
-          <div id="printable-ehr-document" style={{ color: "#e2e8f0" }}>
+          <div id="printable-ehr-document" style={{ color: "var(--text-body)" }}>
             {/* Header Banner */}
             <div
               style={{
                 textAlign: "center",
                 paddingBottom: "20px",
-                borderBottom: "2px double var(--gold-primary)",
+                borderBottom: "2px solid var(--border-subtle)",
                 marginBottom: "24px",
               }}
             >
+              <img
+                src="/logo.png"
+                alt="AyurSutra Logo"
+                style={{ width: "54px", height: "54px", objectFit: "contain", margin: "0 auto 8px", display: "block" }}
+              />
               <div
                 style={{
                   fontFamily: "var(--font-serif)",
                   fontSize: "1.9rem",
-                  color: "var(--gold-light)",
-                  letterSpacing: "0.1em",
+                  color: "var(--emerald-primary)",
+                  letterSpacing: "0.04em",
                   fontWeight: 700,
                 }}
               >
@@ -184,11 +189,12 @@ const AyurvedicEHRReport = ({ isOpen, onClose, patientId: _patientId = null, pat
                   fontSize: "0.85rem",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  color: "var(--mint-accent)",
+                  color: "var(--emerald-accent)",
                   marginTop: "2px",
+                  fontWeight: 600,
                 }}
               >
-                Panchakarma Sanctuary & Research Clinic
+                Panchakarma Management &amp; Scheduling Clinic
               </div>
               <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontStyle: "italic", marginTop: "4px" }}>
                 "Swasthyasya Swasthya Rakshanam, Aturasya Vikara Prashamanam Cha"
@@ -270,7 +276,7 @@ const AyurvedicEHRReport = ({ isOpen, onClose, patientId: _patientId = null, pat
                   <div
                     key={t.id}
                     style={{
-                      background: "rgba(18, 38, 28, 0.5)",
+                      background: "var(--bg-surface-soft)",
                       border: "1px solid var(--border-subtle)",
                       borderRadius: "10px",
                       padding: "12px 14px",
@@ -328,7 +334,7 @@ const AyurvedicEHRReport = ({ isOpen, onClose, patientId: _patientId = null, pat
                   <div
                     key={c.id}
                     style={{
-                      background: "rgba(8, 19, 14, 0.7)",
+                      background: "var(--bg-surface-soft)",
                       border: "1px solid var(--border-subtle)",
                       borderRadius: "10px",
                       padding: "12px 14px",

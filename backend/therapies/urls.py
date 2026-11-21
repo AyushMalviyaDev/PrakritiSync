@@ -9,15 +9,21 @@ from .views import (
 router = DefaultRouter()
 
 router.register(
-    "therapies",
-    TherapyViewSet,
-    basename="therapy"
-)
-
-router.register(
     "patient-therapies",
     PatientTherapyViewSet,
     basename="patient-therapy"
+)
+
+router.register(
+    "therapies",
+    TherapyViewSet,
+    basename="therapy-nested"
+)
+
+router.register(
+    "",
+    TherapyViewSet,
+    basename="therapy"
 )
 
 urlpatterns = [

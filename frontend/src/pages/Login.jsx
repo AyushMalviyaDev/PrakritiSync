@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Leaf, Mail, Lock, ArrowRight, ShieldCheck } from "lucide-react";
+import { Mail, Lock, ArrowRight, ShieldCheck } from "lucide-react";
 
 import { loginUser } from "../services/authService";
 import { useAuthContext } from "../context/AuthContext";
+import useLanguage from "../hooks/useLanguage";
+import LanguageToggle from "../components/common/LanguageToggle";
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuthContext();
+  const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -88,13 +91,17 @@ const Login = () => {
 
   return (
     <div className="auth-page">
+      <div className="auth-lang-bar">
+        <LanguageToggle />
+      </div>
+
       <div className="auth-card">
         <div className="auth-header">
           <div className="auth-logo-badge">
-            <Leaf size={28} />
+            <img src="/logo.png" alt="AyurSutra Logo" className="auth-logo-img" />
           </div>
-          <h1>AYURSUTRA</h1>
-          <p>Panchakarma Sanctuary Management System</p>
+          <h1>AyurSutra</h1>
+          <p>{t("auth.signInSubtitle", "Panchakarma Management & Scheduling Platform")}</p>
         </div>
 
         {error && (
@@ -116,12 +123,12 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Email Address</label>
+            <label className="form-label">{t("auth.email", "Email Address")}</label>
             <div style={{ position: "relative" }}>
               <input
                 type="email"
                 name="email"
-                placeholder="name@example.com"
+                placeholder={t("auth.emailPlaceholder", "name@example.com")}
                 value={formData.email}
                 onChange={handleChange}
                 className="input-control"
@@ -142,7 +149,7 @@ const Login = () => {
           </div>
 
           <div className="form-group" style={{ marginBottom: "24px" }}>
-            <label className="form-label">Password</label>
+            <label className="form-label">{t("auth.password", "Password")}</label>
             <div style={{ position: "relative" }}>
               <input
                 type="password"
@@ -174,10 +181,10 @@ const Login = () => {
             disabled={loading}
           >
             {loading ? (
-              "Signing in..."
+              t("auth.signingIn", "Signing in...")
             ) : (
               <>
-                <span>Sign In to Portal</span>
+                <span>{t("auth.signInButton", "Sign In to Portal")}</span>
                 <ArrowRight size={18} />
               </>
             )}
@@ -191,7 +198,7 @@ const Login = () => {
               color: "var(--text-muted)",
             }}
           >
-            New to AyurSutra?{" "}
+            {t("auth.noAccount", "Don't have an account?")}{" "}
             <Link
               to="/register"
               style={{
@@ -200,7 +207,7 @@ const Login = () => {
                 fontWeight: 600,
               }}
             >
-              Create Patient Account
+              {t("auth.registerHere", "Register here")}
             </Link>
           </p>
 
@@ -224,7 +231,7 @@ const Login = () => {
                 justifyContent: "center",
               }}
             >
-              <ShieldCheck size={14} /> Quick Demo Access
+              <ShieldCheck size={14} /> {t("auth.quickDemo", "Quick Demo Access")}
             </div>
 
             <div
@@ -239,28 +246,28 @@ const Login = () => {
                 onClick={() => handleQuickFill("patient@ayursutra.local", "Panchakarma@123")}
                 className="btn btn-secondary btn-sm"
               >
-                Patient
+                {t("role.PATIENT", "Patient")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickFill("vaidya@ayursutra.local", "Panchakarma@123")}
                 className="btn btn-secondary btn-sm"
               >
-                Vaidya
+                {t("role.VAIDYA", "Vaidya")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickFill("therapist@ayursutra.local", "Panchakarma@123")}
                 className="btn btn-secondary btn-sm"
               >
-                Therapist
+                {t("role.THERAPIST", "Therapist")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickFill("admin@ayursutra.local", "Panchakarma@123")}
                 className="btn btn-secondary btn-sm"
               >
-                Admin
+                {t("role.ADMIN", "Admin")}
               </button>
             </div>
           </div>

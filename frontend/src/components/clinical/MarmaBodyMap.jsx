@@ -103,14 +103,14 @@ const MarmaBodyMap = ({ onSelectTherapy }) => {
         <div
           style={{
             position: "relative",
-            background: "radial-gradient(circle, rgba(16, 36, 26, 0.9) 0%, rgba(6, 14, 10, 0.95) 100%)",
-            border: "1px solid var(--border-card)",
+            background: "radial-gradient(circle, #f0fdf4 0%, #f8fafc 100%)",
+            border: "1px solid var(--border-subtle)",
             borderRadius: "16px",
             padding: "16px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            boxShadow: "inset 0 0 30px rgba(0, 0, 0, 0.6)",
+            boxShadow: "var(--shadow-sm)",
           }}
         >
           <svg
@@ -153,8 +153,8 @@ const MarmaBodyMap = ({ onSelectTherapy }) => {
                  L 158,75 
                  C 166,70 174,60 174,45 
                  C 174,30 164,20 150,20 Z"
-              fill="rgba(20, 48, 34, 0.45)"
-              stroke="rgba(52, 211, 153, 0.35)"
+              fill="rgba(5, 150, 105, 0.12)"
+              stroke="rgba(5, 150, 105, 0.45)"
               strokeWidth="1.5"
             />
 
@@ -250,8 +250,8 @@ const MarmaBodyMap = ({ onSelectTherapy }) => {
         {/* Selected Marma Clinical Details */}
         <div
           style={{
-            background: "linear-gradient(135deg, rgba(20, 42, 31, 0.8) 0%, rgba(12, 26, 19, 0.9) 100%)",
-            border: "1px solid var(--border-gold)",
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
             borderRadius: "16px",
             padding: "24px",
             boxShadow: "var(--shadow-card)",
@@ -268,7 +268,7 @@ const MarmaBodyMap = ({ onSelectTherapy }) => {
             <span
               style={{
                 fontSize: "0.75rem",
-                color: "var(--gold-primary)",
+                color: "var(--emerald-primary)",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 fontWeight: 700,
@@ -284,7 +284,7 @@ const MarmaBodyMap = ({ onSelectTherapy }) => {
                 borderRadius: "12px",
                 background: "var(--mint-tint)",
                 color: "var(--mint-accent)",
-                border: "1px solid rgba(52, 211, 153, 0.3)",
+                border: "1px solid #a7f3d0",
                 fontWeight: 600,
               }}
             >
@@ -312,14 +312,14 @@ const MarmaBodyMap = ({ onSelectTherapy }) => {
               fontSize: "0.88rem",
             }}
           >
-            <div style={{ background: "var(--bg-input)", padding: "10px 14px", borderRadius: "10px", border: "1px solid var(--border-subtle)" }}>
+            <div style={{ background: "var(--bg-surface-soft)", padding: "10px 14px", borderRadius: "10px", border: "1px solid var(--border-subtle)" }}>
               <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", display: "block", marginBottom: "2px" }}>
                 Governing Dosha Axis:
               </span>
               <strong style={{ color: "var(--gold-light)" }}>{selectedPoint.dosha}</strong>
             </div>
 
-            <div style={{ background: "var(--bg-input)", padding: "10px 14px", borderRadius: "10px", border: "1px solid var(--border-subtle)" }}>
+            <div style={{ background: "var(--bg-surface-soft)", padding: "10px 14px", borderRadius: "10px", border: "1px solid var(--border-subtle)" }}>
               <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", display: "block", marginBottom: "2px" }}>
                 Panchakarma Protocol:
               </span>
