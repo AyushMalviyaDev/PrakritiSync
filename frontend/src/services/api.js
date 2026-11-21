@@ -1,7 +1,11 @@
 import axios from "axios";
 
+const rawApiUrl = import.meta.env.VITE_API_URL;
+const backendHost = import.meta.env.VITE_BACKEND_HOST;
+
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
+  rawApiUrl ||
+  (backendHost ? `https://${backendHost}/api` : "http://127.0.0.1:8000/api");
 
 const api = axios.create({
   baseURL: API_BASE_URL,
